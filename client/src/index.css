@@ -13,3 +13,22 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* ------------------General----------------- */
+a {
+  text-decoration: none;
+  color: #000;
+}
+
+ul {
+  list-style: none;
+}
+
+.App {
+  max-width: 986px;
+  min-height: 100vh;
+  margin: 0 auto;
+}
+
+/* -------------------Header------------------ */
+@import url('./components/headers/Header.css');

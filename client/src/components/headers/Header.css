@@ -1,0 +1,25 @@
+.Logo {
+    opacity: 0.8;
+    font-weight: 700;
+}
+
+.Navbar_actions {
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.Cart_quantity {
+    top: 8px;
+    right: 4px;
+    width: 16px;
+    height: 16px;
+    line-height: 16px;
+    font-size: 10px;
+    background-color: #DC3545;
+    color: #fff;
+    text-align: center;
+}
+
+.Cart_icon {
+    width: 24px;
+}
