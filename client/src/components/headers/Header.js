@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { GlobalState } from '../../GlobalState';
 import Menu from './icon/bars.svg';
@@ -33,24 +33,24 @@ function Header() {
                 </Link>
             </div> */}
 
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <div class="navbar-brand Logo">ECOMMERCE WEB</div>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+            <nav className="navbar navbar-expand-lg navbar-light bg-light">
+                <div className="navbar-brand Logo">ECOMMERCE WEB</div>
+                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span className="navbar-toggler-icon"></span>
                 </button>
 
-                <div class="collapse navbar-collapse Navbar_actions" id="navbarSupportedContent">
-                    <ul class="navbar-nav mr-0 ml-auto">
-                        <li class="nav-item pr-3 active">
-                            <Link class="nav-link" to="/">Product <span class="sr-only">(current)</span></Link>
+                <div className="collapse navbar-collapse Navbar_actions" id="navbarSupportedContent">
+                    <ul className="navbar-nav mr-0 ml-auto">
+                        <li className="nav-item pr-3 active">
+                            <Link className="nav-link" to="/">Product <span className="sr-only">(current)</span></Link>
                         </li>
-                        <li class="nav-item pr-3 d-flex">
-                            <Link class="nav-link" to="/login">Login</Link>
+                        <li className="nav-item pr-3 d-flex">
+                            <Link className="nav-link" to="/login">Login</Link>
                             <span className="align-self-center">&#10022;</span>
-                            <Link class="nav-link" to="/register">Register</Link>
+                            <Link className="nav-link" to="/register">Register</Link>
                         </li>
-                        <li class="nav-item pr-3">
-                            <Link class="nav-link disabled position-relative" to="/cart">
+                        <li className="nav-item pr-3">
+                            <Link className="nav-link disabled position-relative" to="/cart">
                                 <span className="position-absolute rounded-circle Cart_quantity">0</span>
                                 <img src={Cart} alt="" className="Cart_icon"></img>
                             </Link>

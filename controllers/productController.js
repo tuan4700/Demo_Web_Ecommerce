@@ -24,10 +24,10 @@ class APIFeatures {
 
     sorting(){
         if(this.querystring.sort) {
-            const sortBy = this.querystring.sort.split(',').join('');
+            const sortBy = this.querystring.sort.split(',').join(' ');
             this.query = this.query.sort(sortBy);
         } else {
-            this.query = this.query.sort(sortBy);
+            this.query = this.query.sort('-createdAt');
         }
 
         return this;
@@ -58,7 +58,9 @@ const productController = {
             const products = await features.query;
 
             res.json({
-                result: products.length
+                status: 'successful',
+                result: products.length,
+                products: products
             });
         } catch (error) {
             return res.status(500).json({message: error.message});
