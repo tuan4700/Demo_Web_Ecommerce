@@ -1,7 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { GlobalState } from '../../GlobalState';
-import Menu from './icon/bars.svg';
 import Cart from './icon/cart.svg';
 import Close from './icon/close.svg';
 

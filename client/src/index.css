@@ -32,3 +32,5 @@ ul {
 
 /* -------------------Header------------------ */
 @import url('./components/headers/Header.css');
+/* -------------------Products---------------- */
+@import url('./components/mainpages/products/products.css');

@@ -7,7 +7,7 @@ const uploadController = {
         try {
             console.log(req.files);
             if(!req.files || Object.keys(req.files).length === 0)
-                return res.status(500).json({message: "No file was uploaded."});
+                return res.status(400).json({message: "No file was uploaded."});
             
             const file = req.files.file;
             // checked file

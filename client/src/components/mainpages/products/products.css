@@ -1,0 +1,8 @@
+.products {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+/* -------------------ProductItem------------------- */
+@import url('../utils/productItem/productItem.css');
