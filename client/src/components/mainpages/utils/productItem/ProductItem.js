@@ -11,7 +11,7 @@ function ProductItem({productItem}) {
             </div>
             <div className="d-flex product-card__btns">
                 <Link className="btn btn-secondary product-card__btns__buy" to="#!">Buy</Link>
-                <Link className="btn btn-primary product-card__btns__view" to={`detail/${productItem._id}`}>View</Link>
+                <Link className="btn btn-primary product-card__btns__view" to={`/detail/${productItem._id}`}>View</Link>
             </div>
         </div>
     )
