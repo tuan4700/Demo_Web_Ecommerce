@@ -9,10 +9,6 @@ function ProductItem({productItem}) {
                 <h6 className="text-danger product-card__content__price">${productItem.price}</h6>
                 <h6 className="product-card__content__description">{productItem.description}</h6>
             </div>
-            {/* <div className="d-flex product-card__btns">
-                <Link className="btn btn-secondary product-card__btns__buy" to="#!">Buy</Link>
-                <Link className="btn btn-primary product-card__btns__view" to={`/detail/${productItem._id}`}>View</Link>
-            </div> */}
             <BtnProduct product={productItem} />
         </div>
     )

@@ -36,3 +36,5 @@ ul {
 @import url('./components/mainpages/products/products.css');
 /* -------------------DetailProduct------------ */
 @import url('./components/mainpages/DetailProduct/DetailProduct.css');
+/* -------------------Login/Register------------- */
+@import url('./components/mainpages/auth/auth.css');

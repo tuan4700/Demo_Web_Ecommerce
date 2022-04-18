@@ -1,0 +1,59 @@
+.login-page,
+.register-page {
+    width: 400px;
+    margin: 12px auto 0;
+    border: 2px solid #FFA566;
+    border-radius: 6px;
+}
+
+.login-page__title,
+.register-page__title {
+    margin-top: 12px;
+    margin-bottom: 0;
+    font-size: 48px;
+    font-weight: 700;
+    height: 58px;
+    text-align: center;
+    color: #36C590;
+    line-height: 48px;
+}
+
+.login-page__form-group,
+.register-page__form-group {
+    margin: 8px 12px;
+}
+
+.login-page__btns,
+.register-page__btns {
+    margin: 16px 12px;
+    justify-content: space-between;
+}
+
+.login-page__btns__main,
+.login-page__btns__side,
+.register-page__btns__main,
+.register-page__btns__side {
+    width: 120px;
+    height: 40px;
+    text-decoration: none;
+}
+
+.login-page__btns__main__title,
+.register-page__btns__main__title {
+    margin: 0;
+    height: 40px;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 22px;
+}
+
+.login-page__btns__side__title,
+.register-page__btns__side__title {
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 40px;
+    text-align: center;
+    margin: 0;
+    color: #8366B4;
+    opacity: 0.6;
+}
