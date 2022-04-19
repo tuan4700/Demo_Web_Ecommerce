@@ -7,7 +7,7 @@ const userSchema = new Schema (
         email: { type: String, required: true, unique: true },
         password: { type: String, required: true },
         role: { type: Number, default: 0 },
-        // cart: { type: Array, default: [] },
+        cart: { type: Array, default: [] },
     },
     {
         timestamps: true,

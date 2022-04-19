@@ -11,6 +11,12 @@
     height: 300px;
 }
 
+.product-card__checked {
+    width: 20px;
+    height: 20px;
+    margin-top: 0;
+}
+
 .product-card__content__title {
     font-size: 24px;
     font-weight: 700;

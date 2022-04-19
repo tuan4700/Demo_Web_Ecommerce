@@ -8,7 +8,6 @@ function DetailProduct() {
     const state = useContext(GlobalState);
     const [products] = state.productsAPI.products;
     const [detailProduct, setDetailProduct] = useState([]);
-    // console.log(params);
 
     useEffect(() => {
         if(params.id) {

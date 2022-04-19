@@ -6,14 +6,14 @@ import axios from 'axios';
 
 function Header() {
     const state = useContext(GlobalState);
-    const [isLogged, setIsLogged] = state.userAPI.isLogged;
-    const [isAdmin, setIsAdmin] = state.userAPI.isAdmin;
+    const [isLogged] = state.userAPI.isLogged;
+    const [isAdmin] = state.userAPI.isAdmin;
+    const [cart] = state.userAPI.cart;
 
     async function logoutUser() {
         await axios.get('/user/logout');
         localStorage.clear();
-        setIsLogged(false);
-        setIsAdmin(false);
+        window.location.href = "/";
     }
 
     function adminRouter() {
@@ -56,24 +56,24 @@ function Header() {
                             <Link className="nav-link pr-3" to="/">{isAdmin ? 'Product' : 'Shop'}<span className="sr-only">(current)</span></Link>
                         </li>
                         {isAdmin && adminRouter()}
-                            {isLogged ? loggedRouter() :
-                            <>
-                                <li className="nav-item">
-                                    <Link className="nav-link" to="/login">Login</Link>
-                                </li>
-                                <li className="nav-item">
-                                    <span className="nav-link pl-0 pr-0 align-self-center text-dark d-none d-none d-lg-block d-xl-block">&#10022;</span>
-                                </li>
-                                <li className="nav-item">
-                                    <Link className="nav-link pr-3" to="/register">Register</Link>
-                                </li>
-                            </> 
-                            }
+                        {isLogged ? loggedRouter() :
+                        <>
+                            <li className="nav-item">
+                                <Link className="nav-link" to="/login">Login</Link>
+                            </li>
+                            <li className="nav-item">
+                                <span className="nav-link pl-0 pr-0 align-self-center text-dark d-none d-none d-lg-block d-xl-block">&#10022;</span>
+                            </li>
+                            <li className="nav-item">
+                                <Link className="nav-link pr-3" to="/register">Register</Link>
+                            </li>
+                        </> 
+                        }
                         <li className="nav-item">
                             {
                                 isAdmin ? '' : 
                                 <Link className="nav-link disabled position-relative pr-3" to="/cart">
-                                    <span className="position-absolute rounded-circle Cart_quantity">0</span>
+                                    <span className="position-absolute rounded-circle Cart_quantity">{cart.length}</span>
                                     <img src={Cart} alt="" className="Cart_icon"></img>
                                 </Link>
                             }
