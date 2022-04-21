@@ -1,15 +1,77 @@
-import { useContext, useState } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import { GlobalState } from '../../../GlobalState';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
+import PaypalButton from './PaypalButton';
 import './cart.css';
 
 function Cart() {
     const state = useContext(GlobalState);
-    const [cart] = state.userAPI.cart;
+    const [cart, setCart] = state.userAPI.cart;
+    const [token] = state.token;
     const [total, setTotal] = useState(0);
+    // console.log(cart)
+
+    async function saveCart() {
+        await axios.patch('/user/addCart', {cart}, {
+            headers: {Authorization: token}
+        })
+    }
+
+    useEffect(() => {
+        function getTotal() {
+            const total = cart.reduce((sum, item) => {
+                return sum + (item.price * item.quantity);
+            }, 0);
+
+            setTotal(total);
+        }
+
+        getTotal();
+    }, [cart]);
     
     if(cart.length === 0)
         return <h2 className="cart__empty">Cart Empty</h2>;
+
+    function quantityDec(id) {
+        cart.forEach(item => {
+            if(item.quantity === 1) return;
+            if(item._id === id) {
+                item.quantity --;
+            }
+        });
+
+        setCart([...cart]);
+        saveCart();
+    };
+
+    function quantityInc(id) {
+        cart.forEach(item => {
+            if(item._id === id) {
+                item.quantity ++;
+            }
+        });
+
+        setCart([...cart]);
+        saveCart();
+    };
+
+    function removeProduct(id) {
+        if(window.confirm("Would you like to remove this product?")) {
+            cart.forEach((item, index) => {
+                if(item._id === id) {
+                    cart.splice(index, 1);
+                }
+            })
+
+            setCart([...cart]);
+            saveCart();
+        }
+    }
+
+    async function tranSuccess(payment) {
+        console.log(payment);
+    }
 
     return (
         <div>
@@ -27,18 +89,21 @@ function Cart() {
                             <h6 className="w-100 detail-product__info__sold">Sold: {product.sold}</h6>
                             <div className="d-flex cart__quantity">
                                 <span className="cart__quantity-title">Quantity: </span>
-                                <button className="text-primary cart__quantity-dec"> - </button>
+                                <button className="text-primary cart__quantity-dec" onClick={() => quantityDec(product._id)}> - </button>
                                 <span className="cart__quantity-number">{product.quantity}</span>
-                                <button className="text-primary cart__quantity-inc"> + </button>
+                                <button className="text-primary cart__quantity-inc" onClick={() => quantityInc(product._id)}> + </button>
                             </div>
-                            <div className="text-danger cart__delete">X</div>
+                            <div className="text-danger cart__delete" onClick={() => removeProduct(product._id)}>X</div>
                         </div>
                     </div>
                 ))
             }
-            <div className="d-flex justify-content-between">
-                <div className="text-danger">Total: $ {total}</div>
-                <Link to="#!" className="text-info">Payment</Link>
+            <div className="d-flex justify-content-between cart__cost">
+                <div className="text-danger cart__total">Total: $ {total}</div>
+                <PaypalButton
+                    total={total}
+                    tranSuccess={tranSuccess}
+                />
             </div>
         </div>
     )

@@ -60,3 +60,20 @@
     text-align: center;
     cursor: pointer;
 }
+
+.cart__cost {
+    margin: 12px 0;
+}
+
+.cart__total {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 38px;
+}
+
+.cart__payment {
+    font-size: 18px;
+    font-weight: 400;
+    padding: 4px 8px;
+    border-radius: 4px;
+}
