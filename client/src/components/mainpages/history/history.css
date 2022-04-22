@@ -1,0 +1,13 @@
+.history__title {
+    text-align: center;
+    margin: 6px 0;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.history__orders {
+    text-align: center;
+    margin: 6px 0;
+    text-transform: uppercase;
+    font-weight: 600;
+}

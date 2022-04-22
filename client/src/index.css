@@ -32,9 +32,15 @@ ul {
 
 /* -------------------Header------------------ */
 @import url('./components/headers/Header.css');
+
 /* -------------------Products---------------- */
 @import url('./components/mainpages/products/products.css');
+
 /* -------------------DetailProduct------------ */
 @import url('./components/mainpages/DetailProduct/DetailProduct.css');
+
 /* -------------------Login/Register------------- */
 @import url('./components/mainpages/auth/auth.css');
+
+/* -------------------History-------------------- */
+@import url('./components/mainpages/history/history.css');

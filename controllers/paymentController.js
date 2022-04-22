@@ -23,11 +23,23 @@ const paymentController = {
             const newPayment = new Payments({
                 user_id: _id, name, email, cart, paymentID, address
             })
-            res.json({newPayment});
+            
+            cart.filter(item => {
+                return sold(item._id, item.quantity, item.sold);
+            })
+
+            await newPayment.save();
+            res.json({message: "Payment successful."});
         } catch (error) {
             return res.status(500).json({message: error.message});
         }
     }
 };
+
+async function sold(id, quantity, oldSold) {
+    await Products.findOneAndUpdate({_id: id}, {
+        sold: quantity + oldSold
+    })
+}
 
 module.exports = paymentController;

@@ -1,6 +1,5 @@
 import { useContext, useState, useEffect } from 'react';
 import { GlobalState } from '../../../GlobalState';
-import { Link } from 'react-router-dom';
 import axios from 'axios';
 import PaypalButton from './PaypalButton';
 import './cart.css';
@@ -9,10 +8,11 @@ function Cart() {
     const state = useContext(GlobalState);
     const [cart, setCart] = state.userAPI.cart;
     const [token] = state.token;
+    const [callback, setCallback] = state.userAPI.callback;
     const [total, setTotal] = useState(0);
     // console.log(cart)
 
-    async function saveCart() {
+    async function saveCart(cart) {
         await axios.patch('/user/addCart', {cart}, {
             headers: {Authorization: token}
         })
@@ -42,7 +42,7 @@ function Cart() {
         });
 
         setCart([...cart]);
-        saveCart();
+        saveCart(cart);
     };
 
     function quantityInc(id) {
@@ -53,11 +53,11 @@ function Cart() {
         });
 
         setCart([...cart]);
-        saveCart();
+        saveCart(cart);
     };
 
-    function removeProduct(id) {
-        if(window.confirm("Would you like to remove this product?")) {
+    function deleteProduct(id) {
+        if(window.confirm("Would you like to delete this product?")) {
             cart.forEach((item, index) => {
                 if(item._id === id) {
                     cart.splice(index, 1);
@@ -65,12 +65,21 @@ function Cart() {
             })
 
             setCart([...cart]);
-            saveCart();
+            saveCart(cart);
         }
     }
 
     async function tranSuccess(payment) {
-        console.log(payment);
+        const {paymentID, address} = payment;
+
+        await axios.post('/api/payment', {cart, paymentID, address}, {
+            headers:{Authorization: token}
+        })
+
+        setCart([]);
+        saveCart([]);
+        alert("You have successfully placed an order.");
+        setCallback(!callback);
     }
 
     return (
@@ -93,7 +102,7 @@ function Cart() {
                                 <span className="cart__quantity-number">{product.quantity}</span>
                                 <button className="text-primary cart__quantity-inc" onClick={() => quantityInc(product._id)}> + </button>
                             </div>
-                            <div className="text-danger cart__delete" onClick={() => removeProduct(product._id)}>X</div>
+                            <div className="text-danger cart__delete" onClick={() => deleteProduct(product._id)}>X</div>
                         </div>
                     </div>
                 ))

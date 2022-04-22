@@ -7,7 +7,9 @@ function DetailProduct() {
     const params = useParams();
     const state = useContext(GlobalState);
     const [products] = state.productsAPI.products;
+    const addCart = state.userAPI.addCart;
     const [detailProduct, setDetailProduct] = useState([]);
+    // console.log(state);
 
     useEffect(() => {
         if(params.id) {
@@ -31,7 +33,7 @@ function DetailProduct() {
                     <h6 className="w-100 text-danger detail-product__info__price">${detailProduct.price}</h6>
                     <h6 className="w-100 detail-product__info__description">{detailProduct.description}</h6>
                     <h6 className="w-100 detail-product__info__sold">Sold: {detailProduct.sold}</h6>
-                    <Link className="btn btn-secondary detail-product__btn__buy" to="/cart">Buy now</Link>
+                    <Link className="btn btn-secondary detail-product__btn__buy" to="/cart" onClick={() => addCart(detailProduct)}>Buy now</Link>
                 </div>
             </div>
             <div className="related-products">
