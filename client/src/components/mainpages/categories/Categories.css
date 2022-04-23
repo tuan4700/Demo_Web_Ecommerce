@@ -1,0 +1,38 @@
+.categories__form-title {
+    padding-left: 86px;
+    font-size: 22px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+}
+
+.form-control {
+    border: none;
+    border-bottom: 1px solid #495057;
+    border-radius: 0;
+}
+
+.form-control:focus {
+    outline: 0;
+    border: none;
+    border-bottom: 1px solid #495057;
+    box-shadow: none;
+    border-radius: 0;
+}
+
+.category__list-title {
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.category__item {
+    justify-content: space-between;
+    align-items: center;
+}
+
+.category__item-empty {
+    font-size: 18px;
+    font-weight: 400;
+    text-align: center;
+}

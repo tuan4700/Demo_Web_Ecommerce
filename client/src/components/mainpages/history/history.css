@@ -11,3 +11,12 @@
     text-transform: uppercase;
     font-weight: 600;
 }
+
+.order-details__product {
+    line-height: 90px;
+    font-size: 18px;
+}
+
+.order-details__product__image {
+    width: 90px;
+}

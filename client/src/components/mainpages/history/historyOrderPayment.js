@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 function HistoryOrderPayment() {
     const state = useContext(GlobalState);
     const [history] = state.userAPI.history;
-    console.log(history);
 
     function emptyCartHistory() {
         return (
