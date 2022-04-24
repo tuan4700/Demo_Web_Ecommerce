@@ -13,7 +13,7 @@ cloudinary.config({
     api_secret: process.env.CLOUD_API_SECRET,
 });
 
-router.post('/upload', uploadController.uploadImage);
-router.post('/destroy', uploadController.destroyImage);
+router.post('/upload', auth, authAdmin, uploadController.uploadImage);
+router.post('/destroy', auth, authAdmin, uploadController.destroyImage);
 
 module.exports = router;

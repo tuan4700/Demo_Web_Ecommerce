@@ -7,13 +7,13 @@
     margin-bottom: 12px;
 }
 
-.form-control {
+.categories__form-name {
     border: none;
     border-bottom: 1px solid #495057;
     border-radius: 0;
 }
 
-.form-control:focus {
+.categories__form-name:focus {
     outline: 0;
     border: none;
     border-bottom: 1px solid #495057;

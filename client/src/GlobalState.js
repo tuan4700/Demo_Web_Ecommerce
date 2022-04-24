@@ -10,14 +10,18 @@ export const GlobalState = createContext();
 export function DataProvider({children}) {
     const [token, setToken] = useState(false);
 
-    async function resfreshToken() {
-        const res = await axios.get('/user/refresh_token');
-        setToken(res.data.accesstoken);
-    }
-
     useEffect(() => {
-        const firstLogin = localStorage.getItem('firstLogin');
+        const firstLogin = localStorage.getItem('firstLogin', true);
         if(firstLogin) {
+            async function resfreshToken() {
+                const res = await axios.get('/user/refresh_token');
+                setToken(res.data.accesstoken);
+                
+                setTimeout(() => {
+                    resfreshToken();
+                }, 10 * 60 * 60 * 1000);
+            }
+            
             resfreshToken();
         }
     }, []);

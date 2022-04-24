@@ -18,8 +18,6 @@ function OderDetails() {
     }, [params.id, history]);
     
     if(orderDetails.length === 0) return null;
-    
-    console.log(orderDetails.cart);
 
     return (
         <div>

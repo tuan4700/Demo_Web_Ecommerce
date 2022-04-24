@@ -47,3 +47,6 @@ ul {
 
 /* -------------------Category------------------- */
 @import url('./components/mainpages/categories/Categories.css');
+
+/* -------------------CreateProduct-------------- */
+@import url('./components/mainpages/createProduct/CreateProduct.css');

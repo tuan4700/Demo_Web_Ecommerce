@@ -4,19 +4,47 @@ import axios from 'axios';
 
 function Categories() {
     const state = useContext(GlobalState);
-    const [categories, setCategories] = state.categoriesAPI.categories;
+    const [categories] = state.categoriesAPI.categories;
     const [token] = state.token;
     const [category, setCategory] = useState('');
     const [callback, setCallback] = state.categoriesAPI.callback;
+    const [onEditCategory, setOnEditCategory] = useState(false);
+    const [id, setID] = useState('');
     // console.log(state);
 
     async function createCategory(e) {
         e.preventDefault();
         try {
-            const res = await axios.post('/api/category', {name: category}, {
+            if(onEditCategory) {
+                const res = await axios.put(`/api/category/${id}`, {name: category}, {
+                    headers: {Authorization: token}
+                })
+                alert(res.data.message);
+            } else {
+                const res = await axios.post('/api/category', {name: category}, {
+                    headers: {Authorization: token}
+                })
+                alert(res.data.message);
+            }
+            setOnEditCategory(false);
+            setCategory('');
+            setCallback(!callback);
+        } catch (error) {
+            alert(error.response.data.message);
+        }
+    }
+
+    async function editCategory(id, name) {
+        setID(id);
+        setCategory(name);
+        setOnEditCategory(true);
+    }
+
+    async function deleteCategory(id) {
+        try {
+            const res = await axios.delete(`/api/category/${id}`, {
                 headers: {Authorization: token}
             })
-            setCategory('');
             alert(res.data.message);
             setCallback(!callback);
         } catch (error) {
@@ -29,8 +57,8 @@ function Categories() {
             <form className="col form-inline" onSubmit={createCategory}>
                 <div className="d-flex justify-content-center align-items-center flex-wrap">
                     <span className="w-100 categories__form-title">Category</span>
-                    <input type="text" className="form-control" value={category} required onChange={e => setCategory(e.target.value)}/>
-                    <button type="submit" className="btn btn-primary ml-3 pl-4 pr-4">Save</button>
+                    <input type="text" className="form-control categories__form-name" value={category} required onChange={e => setCategory(e.target.value)}/>
+                    <button type="submit" className="btn btn-primary ml-3 pl-4 pr-4">{onEditCategory ? "Update" : "Save"}</button>
                 </div>
             </form>
             <div className="col mt-2">
@@ -43,8 +71,20 @@ function Categories() {
                             <li className="list-group-item d-flex category__item mb-2" key={item._id}>
                                 <span>{item.name}</span>
                                 <div>
-                                    <button type="button" className="btn btn-secondary pl-4 pr-4">Edit</button>
-                                    <button type="button" className="btn btn-secondary ml-2">Delete</button>
+                                    <button
+                                        type="button"
+                                        className="btn btn-secondary pl-4 pr-4"
+                                        onClick={() => editCategory(item._id, item.name)}
+                                    >
+                                        Edit
+                                    </button>
+                                    <button
+                                        type="button"
+                                        className="btn btn-secondary ml-2"
+                                        onClick={() => deleteCategory(item._id)}
+                                    >
+                                        Delete
+                                    </button>
                                 </div>
                             </li>
                         ))

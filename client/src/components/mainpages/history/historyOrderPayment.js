@@ -1,10 +1,33 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { GlobalState } from '../../../GlobalState';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 function HistoryOrderPayment() {
     const state = useContext(GlobalState);
-    const [history] = state.userAPI.history;
+    const [history, setHistory] = state.userAPI.history;
+    const [token] = state.token;
+    const [isAdmin] = state.userAPI.isAdmin;
+
+    useEffect(() => {
+        if(token) {
+            async function getHistory() {
+                if(isAdmin) {
+                    const res = await axios.get('/api/payment', {
+                        headers: {Authorization: token}
+                    });
+                    setHistory(res.data);
+                } else {
+                    const res = await axios.get('/user/history', {
+                        headers: {Authorization: token}
+                    });
+                    setHistory(res.data);
+                }
+            }
+
+            getHistory();
+        }
+    }, [token, setHistory, isAdmin]);
 
     function emptyCartHistory() {
         return (

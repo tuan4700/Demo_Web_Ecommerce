@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { GlobalState } from '../../GlobalState';
 import Cart from './icon/cart.svg';
@@ -12,7 +12,7 @@ function Header() {
 
     async function logoutUser() {
         await axios.get('/user/logout');
-        localStorage.clear();
+        localStorage.removeItem('firstLogin');
         window.location.href = "/";
     }
 
