@@ -1,8 +1,8 @@
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import { GlobalState } from '../../../GlobalState';
 import axios from 'axios';
 import Loading from '../utils/loading/loading';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const initialState = {
     product_id: '',
@@ -22,7 +22,26 @@ function CreateProduct() {
     const [isAdmin] = state.userAPI.isAdmin;
     const [token] = state.token;
     const navigate = useNavigate();
-    // console.log(categories);
+    const param = useParams();
+    const [products] = state.productsAPI.products;
+    const [edit, setEdit] = useState(false);
+    const [callback, setCallback] = state.productsAPI.callback;
+    
+    useEffect(() => {
+        if(param.id) {
+            setEdit(true);
+            products.forEach(product => {
+                if(product._id === param.id) {
+                    setProduct(product);
+                    setImage(product.image);
+                }
+            })
+        } else {
+            setEdit(false);
+            setProduct(initialState);
+            setImage(false);
+        }
+    }, [param.id, products])
 
     const styleUploadImage = {
         display: image ? "block" : "none"
@@ -75,12 +94,18 @@ function CreateProduct() {
         try {
             if(!isAdmin) return alert("You are not an admin");
             if(!image) return alert("Image not exists");
-            const res = await axios.post('/api/products', {...product, image}, {
-                headers: {Authorization: token}
-            })
-            setProduct(initialState);
-            setImage(false);
-            alert(res.data.message);
+            if(edit) {
+                const editProduct = await axios.put(`/api/edit_product/${product._id}`, {...product, image}, {
+                    headers: {Authorization: token}
+                })
+                alert(editProduct.response.data.message);
+            } else {
+                const createProduct = await axios.post('/api/products', {...product, image}, {
+                    headers: {Authorization: token}
+                })
+                alert(createProduct.data.message);
+            }
+            setCallback(!callback);
             navigate("/"); // Go to products page
         } catch (error) {
             alert(error.response.data.message);
@@ -115,6 +140,7 @@ function CreateProduct() {
                         value={product.product_id}
                         required
                         onChange={handleChangeInput}
+                        disabled={edit}
                     />
                 </div>
                 <div className="form-group">
@@ -189,7 +215,7 @@ function CreateProduct() {
                         }
                     </select>
                 </div>
-                <button type="submit" className="btn btn-secondary mb-2 create-product__btn">Save</button>
+                <button type="submit" className="btn btn-secondary mb-2 create-product__btn">{edit ? "Update" : "Save" }</button>
             </form>
         </div>
     )

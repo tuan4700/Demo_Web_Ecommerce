@@ -63,10 +63,7 @@ function OderDetails() {
                         ))
                     }
                 </tbody>
-            </table>            
-            
-            
-            {/* order details */}
+            </table>
         </div>
     )
 }

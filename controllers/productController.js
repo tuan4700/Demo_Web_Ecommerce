@@ -88,7 +88,7 @@ const productController = {
         }
     },
 
-    // [DELETE] /api/products
+    // [DELETE] /api/delete_product/:id
     async deleteProducts(req, res) {
         try {
             await Products.findByIdAndDelete(req.params.id);
@@ -98,7 +98,7 @@ const productController = {
         }
     },
 
-    // [PUT] /api/products
+    // [PUT] /api/edit_product/:id
     async updateProducts(req, res) {
         try {
             const {product_id, checked, sold, ...dataFieldProduct} = req.body;
