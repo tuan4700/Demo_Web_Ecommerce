@@ -12,12 +12,24 @@ function BtnProduct({product, deleteProduct}) {
             {
                 isAdmin ?
                 <>
-                    <Link className="btn btn-secondary product-card__btns__buy" to="/" onClick={deleteProduct}>Delete</Link>
+                    <Link
+                        className="btn btn-secondary product-card__btns__buy"
+                        to="/"
+                        onClick={() => deleteProduct(product._id, product.image.public_id)}
+                    >
+                        Delete
+                    </Link>
                     <Link className="btn btn-primary product-card__btns__view" to={`/edit_product/${product._id}`}>Edit</Link>
                 </>
                 :
                 <>
-                    <Link className="btn btn-secondary product-card__btns__buy" to="/#!" onClick={() => addCart(product)}>Buy</Link>
+                    <Link
+                        className="btn btn-secondary product-card__btns__buy"
+                        to="/#!"
+                        onClick={() => addCart(product)}
+                    >
+                        Buy
+                    </Link>
                     <Link className="btn btn-primary product-card__btns__view" to={`/detail/${product._id}`}>View</Link>
                 </>
             }

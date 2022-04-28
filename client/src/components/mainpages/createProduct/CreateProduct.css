@@ -1,3 +1,11 @@
+.App .load-page {
+    height: 100vh;
+}
+
+.create-product__upload-file .load-page {
+    height: 100%;
+}
+
 .create-product__upload-file {
     margin: auto;
     min-height: 400px;

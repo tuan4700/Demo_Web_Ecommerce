@@ -50,7 +50,6 @@ const productController = {
     // [GET] /api/products
     async getProducts(req, res) {
         try {
-            // req.query --> QueryParameter
             const features = new APIFeatures(Products.find(), req.query)
                 .filter()
                 .sorting()

@@ -3,6 +3,26 @@
     flex-wrap: wrap;
 }
 
+.products__checkall {
+    padding-left: 46px;
+    height: 28px;
+}
+
+.products__checkall__title {
+    line-height: 28px;
+}
+
+.products__checkall__checkbox {
+    width: 18px;
+    height: 18px;
+}
+
+.products__checkall__btn {
+    font-size: 16px;
+    padding: 0 6px;
+    margin-right: 42px;
+}
+
 
 /* -------------------ProductItem------------------- */
 @import url('../utils/productItem/productItem.css');

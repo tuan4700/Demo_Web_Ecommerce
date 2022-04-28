@@ -95,15 +95,15 @@ function CreateProduct() {
             if(!isAdmin) return alert("You are not an admin");
             if(!image) return alert("Image not exists");
             if(edit) {
-                const editProduct = await axios.put(`/api/edit_product/${product._id}`, {...product, image}, {
+                await axios.put(`/api/edit_product/${product._id}`, {...product, image}, {
                     headers: {Authorization: token}
                 })
-                alert(editProduct.response.data.message);
+                alert("Update a product successful!");
             } else {
-                const createProduct = await axios.post('/api/products', {...product, image}, {
+                await axios.post('/api/products', {...product, image}, {
                     headers: {Authorization: token}
                 })
-                alert(createProduct.data.message);
+                alert("Create a product successful!");
             }
             setCallback(!callback);
             navigate("/"); // Go to products page
