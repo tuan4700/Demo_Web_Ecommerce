@@ -21,8 +21,30 @@
     font-size: 16px;
     padding: 0 6px;
     margin-right: 42px;
+    height: 30px;
+    width: 90px;
 }
 
 
 /* -------------------ProductItem------------------- */
 @import url('../utils/productItem/productItem.css');
+
+/* -------------------Filters----------------------- */
+select.form-control:not([size]):not([multiple]) {
+    height: 32px;
+}
+
+.filters__title,
+.filters__sort {
+    font-size: 18px;
+}
+
+.filters__selects {
+    width: 146px;
+    font-size: 14px;
+}
+
+.filters__search {
+    height: 32px;
+    width: 508px;
+}
