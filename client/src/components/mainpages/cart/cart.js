@@ -56,7 +56,7 @@ function Cart() {
     };
 
     function deleteProduct(id) {
-        if(window.confirm("Would you like to delete this product?")) {
+        if(window.confirm("Would you like to delete this product from your cart?")) {
             cart.forEach((item, index) => {
                 if(item._id === id) {
                     cart.splice(index, 1);
