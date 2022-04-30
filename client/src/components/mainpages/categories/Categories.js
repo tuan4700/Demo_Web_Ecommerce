@@ -53,23 +53,34 @@ function Categories() {
     }
 
     return (
-        <div className="d-flex row">
-            <form className="col form-inline" onSubmit={createCategory}>
-                <div className="d-flex justify-content-center align-items-center flex-wrap">
-                    <span className="w-100 categories__form-title">Category</span>
-                    <input type="text" className="form-control categories__form-name" value={category} required onChange={e => setCategory(e.target.value)}/>
-                    <button type="submit" className="btn btn-primary ml-3 pl-4 pr-4">{onEditCategory ? "Update" : "Save"}</button>
+        <div className="">
+            <form className="form-inline justify-content-center mt-2 mb-5" onSubmit={createCategory}>
+                <div className="d-flex flex-wrap">
+                    <span className="w-100 text-center categories__form-title">Category</span>
+                    <input
+                        type="text"
+                        className="form-control categories__form-name"
+                        value={category}
+                        required
+                        onChange={e => setCategory(e.target.value)}
+                    />
+                    <button
+                        type="submit"
+                        className="btn btn-primary ml-2 pl-4 pr-4"
+                    >
+                        {onEditCategory ? "Update" : "Save"}
+                    </button>
                 </div>
             </form>
-            <div className="col mt-2">
+            <div className="mt-2 ml-4 mr-3">
                 <span className="category__list-title">List Categories</span>
-                <ul className="list-group mt-2">
+                <ul className="list-group mt-2 pt-2 pb-2 category__list">
                     {
                         categories.length === 0 ? <li className="category__item-empty">Empty List Category</li>
                         :
                         categories.map(item => (
                             <li className="list-group-item d-flex category__item mb-2" key={item._id}>
-                                <span>{item.name}</span>
+                                <span className="category__item__title">{item.name}</span>
                                 <div>
                                     <button
                                         type="button"

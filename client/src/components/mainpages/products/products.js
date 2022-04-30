@@ -4,6 +4,7 @@ import { GlobalState } from '../../../GlobalState';
 import ProductItem from '../utils/productItem/ProductItem';
 import Loading from '../utils/loading/loading';
 import Filters from './filters';
+import LoadMore from './loadMore';
 
 function Products() {
     const state = useContext(GlobalState);
@@ -61,7 +62,7 @@ function Products() {
             </div>
             {
                 isAdmin &&
-                <div className="d-flex justify-content-between form-check mt-2 products__checkall">
+                <div className="d-flex justify-content-between form-check mt-2 mb-2 products__checkall">
                     <div>
                         <span className="products__checkall__title">Select All</span>
                         <input
@@ -103,6 +104,8 @@ function Products() {
                     }
                 </div>
             }
+
+            <LoadMore />
             {products.length === 0 && <Loading />}
         </>
     )

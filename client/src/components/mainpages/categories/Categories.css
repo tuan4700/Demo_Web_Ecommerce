@@ -1,16 +1,16 @@
 .categories__form-title {
-    padding-left: 86px;
-    font-size: 22px;
+    font-size: 32px;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1px;
-    margin-bottom: 12px;
+    margin-bottom: 16px;
 }
 
 .categories__form-name {
     border: none;
     border-bottom: 1px solid #495057;
     border-radius: 0;
+    flex: 1;
 }
 
 .categories__form-name:focus {
@@ -22,13 +22,23 @@
 }
 
 .category__list-title {
-    font-size: 22px;
+    font-size: 24px;
     font-weight: 600;
+}
+
+.category__list {
+    max-height: 430px;
+    overflow-y: scroll;
 }
 
 .category__item {
     justify-content: space-between;
     align-items: center;
+}
+
+.category__item__title {
+    font-size: 17px;
+    font-weight: 500;
 }
 
 .category__item-empty {

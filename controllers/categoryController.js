@@ -1,4 +1,5 @@
 const Categories = require('../models/categoryModel');
+const Products = require('../models/productModel');
 
 const categoryController = {
     // [GET] /api/category
@@ -32,6 +33,9 @@ const categoryController = {
     async deleteCategory(req, res) {
         try {
             // user have role = 1 --> admin --> can delete category
+            const products = await Products.findOne({category: req.params.id});
+            if(products) return res.status(400).json({message: "Please delete products a relationship."});
+
             await Categories.findByIdAndDelete(req.params.id);
             res.json({message: "Deleted category"});
         } catch (error) {
