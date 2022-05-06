@@ -4,6 +4,7 @@
     padding: 12px;
     border: 1px solid #f5f5f5;
     box-shadow: 0px 0px 12px rgb(0 0 0 / 30%);
+    cursor: pointer;
 }
 
 .product-card:hover {
@@ -72,4 +73,23 @@
     text-transform: uppercase;
     font-size: 16px;
     font-weight: 600;
+}
+
+/* ----------------------Responsive---------------------------- */
+@media (max-width: 768px) {
+.product-card {
+    width: 45%;
+}
+}
+
+@media (max-width: 575px) {
+.product-card {
+    width: 80%;
+}
+}
+
+@media (max-width: 396px) {
+.product-card {
+    width: 90%;
+}
 }

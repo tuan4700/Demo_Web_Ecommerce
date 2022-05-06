@@ -46,14 +46,28 @@ function Header() {
         <div>
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
                 <Link to="/" className="navbar-brand Logo">{isAdmin ? 'ADMIN' : 'ECOMMERCE WEB'}</Link>
-                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <button
+                    className="navbar-toggler"
+                    type="button"
+                    data-toggle="collapse"
+                    data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation"
+                >
                     <span className="navbar-toggler-icon"></span>
                 </button>
 
                 <div className="collapse navbar-collapse Navbar_actions" id="navbarSupportedContent">
                     <ul className="navbar-nav mr-0 ml-auto">
                         <li className="nav-item">
-                            <Link className="nav-link pr-3" to="/">{isAdmin ? 'Product' : 'Shop'}<span className="sr-only">(current)</span></Link>
+                            <Link
+                                className="nav-link pr-3"
+                                to="/"
+                            >
+                                {isAdmin ? 'Product' : 'Shop'}
+                                <span className="sr-only">(current)</span>
+                            </Link>
                         </li>
                         {isAdmin && adminRouter()}
                         {isLogged ? loggedRouter() :
@@ -62,7 +76,11 @@ function Header() {
                                 <Link className="nav-link" to="/login">Login</Link>
                             </li>
                             <li className="nav-item">
-                                <span className="nav-link pl-0 pr-0 align-self-center text-dark d-none d-none d-lg-block d-xl-block">&#10022;</span>
+                                <span
+                                    className="nav-link pl-0 pr-0 align-self-center text-dark d-none d-lg-block d-xl-block"
+                                >
+                                    &#10022;
+                                </span>
                             </li>
                             <li className="nav-item">
                                 <Link className="nav-link pr-3" to="/register">Register</Link>
@@ -73,8 +91,9 @@ function Header() {
                             {
                                 isAdmin ? '' : 
                                 <Link className="nav-link disabled position-relative pr-3" to="/cart">
+                                    <span className="d-lg-none d-block Cart_title">Cart</span>
+                                    <img src={Cart} alt="" className="Cart_icon d-lg-block d-none"></img>
                                     <span className="position-absolute rounded-circle Cart_quantity">{cart.length}</span>
-                                    <img src={Cart} alt="" className="Cart_icon"></img>
                                 </Link>
                             }
                         </li>

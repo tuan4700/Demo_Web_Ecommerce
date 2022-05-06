@@ -48,3 +48,59 @@ select.form-control:not([size]):not([multiple]) {
     height: 32px;
     width: 508px;
 }
+
+/* ---------------------------------------Responsive---------------------------- */
+@media (min-width: 959px) and (max-width: 982px) {
+.filters__search {
+    flex: 1;
+}
+}
+
+@media (max-width: 958px) {
+.filter {
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.filters__search {
+    flex: 1;
+}
+}
+
+@media (max-width: 767px) {
+.filters__title,
+.filters__selects,
+.filters__sort,
+.filters__selects {
+    order: 1;
+}
+
+.filters__search {
+    width: 100vw;
+    flex: auto;
+    order: 0;
+}
+}
+
+@media (max-width: 451px) {
+.filters__sort,
+.filters__sort__selects {
+    order: 2;
+}
+
+.filters__selects {
+    width: 100%;
+}
+}
+
+@media (max-width: 768px) {
+.products {
+    justify-content: space-between;
+}
+}
+
+@media (max-width: 575px) {
+.products {
+    justify-content: space-around;
+}
+}

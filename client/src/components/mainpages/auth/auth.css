@@ -57,3 +57,11 @@
     color: #8366B4;
     opacity: 0.6;
 }
+
+/* -----------------------Responsive---------------------------- */
+@media (max-width: 414px) {
+.login-page,
+.register-page {
+    width: 100%;
+}
+}

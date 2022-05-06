@@ -113,7 +113,7 @@ function CreateProduct() {
     }
 
     return (
-        <div className="d-flex create-product">
+        <div className="d-flex mt-sm-4 mt-md-0 flex-sm-column flex-md-row justify-content-sm-center create-product">
             {
                 loading ? <div className="create-product__upload-file"><Loading /></div> :
                 <div className="create-product__upload-file">
@@ -128,8 +128,8 @@ function CreateProduct() {
                     </div>
                 </div>
             }
-            <form className="w-50 mt-4" onSubmit={submitProduct}>
-                <div className="form-group">
+            <form className="mt-4 create-product__form" onSubmit={submitProduct}>
+                <div className="form-group mr-2">
                     <label htmlFor="product_id" className="create-product__form-title">Product ID</label>
                     <input
                         type="text"
@@ -143,7 +143,7 @@ function CreateProduct() {
                         disabled={edit}
                     />
                 </div>
-                <div className="form-group">
+                <div className="form-group mr-2">
                     <label htmlFor="title" className="create-product__form-title">Title</label>
                     <input
                         type="text"
@@ -156,7 +156,7 @@ function CreateProduct() {
                         onChange={handleChangeInput}
                     />
                 </div>
-                <div className="form-group">
+                <div className="form-group mr-2">
                     <label htmlFor="price" className="create-product__form-title">Price</label>
                     <input
                         type="text"
@@ -169,7 +169,7 @@ function CreateProduct() {
                         onChange={handleChangeInput}
                     />
                 </div>
-                <div className="form-group">
+                <div className="form-group mr-2">
                     <label htmlFor="description" className="create-product__form-title">Description</label>
                     <textarea
                         type="text"
@@ -183,7 +183,7 @@ function CreateProduct() {
                         onChange={handleChangeInput}
                     />
                 </div>
-                <div className="form-group">
+                <div className="form-group mr-2">
                     <label htmlFor="content" className="create-product__form-title">Content</label>
                     <textarea
                         type="text"
@@ -197,10 +197,10 @@ function CreateProduct() {
                         onChange={handleChangeInput}
                     />
                 </div>
-                <div className="form-group d-flex flex-justify-content create-product__form">
+                <div className="form-group d-flex create-product__form-category">
                     <label htmlFor="category" className="align-self-center create-product__form-title">Category:</label>
                     <select
-                        className="form-control pt-0 pb-0 h-50"
+                        className="form-control pt-0 pb-0 h-50 create-product__form-category__selects"
                         name="category"
                         id="createProductCategory"
                         placeholder=""
@@ -215,7 +215,12 @@ function CreateProduct() {
                         }
                     </select>
                 </div>
-                <button type="submit" className="btn btn-secondary mb-2 create-product__btn">{edit ? "Update" : "Save" }</button>
+                <button
+                    type="submit"
+                    className="btn btn-secondary mb-2 create-product__btn"
+                >
+                    {edit ? "Update" : "Save" }
+                </button>
             </form>
         </div>
     )

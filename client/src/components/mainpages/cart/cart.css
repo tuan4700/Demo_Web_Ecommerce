@@ -52,17 +52,18 @@
 .cart__delete {
     position: absolute;
     top: 0;
-    right: 0;
-    font-size: 26px;
-    width: 22px;
-    height: 38px;
-    line-height: 38px;
+    right: 6px;
+    font-size: 24px;
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+    font-weight: 900;
     text-align: center;
     cursor: pointer;
 }
 
 .cart__cost {
-    margin: 12px 0;
+    margin: 12px 6px;
 }
 
 .cart__total {
@@ -76,4 +77,28 @@
     font-weight: 400;
     padding: 4px 8px;
     border-radius: 4px;
+}
+
+/* ----------------------Responsive---------------------------- */
+@media (max-width: 510px) {
+.cart__delete {
+    top: 0;
+    right: 0;
+}
+}
+
+@media (max-width: 672px) {
+.cart__quantity {
+    border: 1px solid #ccc;
+    text-align: center;
+    width: 100%;
+    padding-left: 12px;
+}
+
+.cart__quantity-dec,
+.cart__quantity-inc {
+    height: 48px;
+    margin: auto 0;
+    line-height: 48px;
+}
 }

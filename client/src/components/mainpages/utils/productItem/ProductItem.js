@@ -1,31 +1,6 @@
-// import { useState } from 'react';
-// import axios from 'axios';
-// import Loading from '../loading/loading';
 import BtnProduct from './BtnProduct';
 
 function ProductItem({productItem, isAdmin, deleteProduct, handleChecked}) {
-    // const [loading, setLoading] = useState(false);
-
-    // async function deleteProduct() {
-    //     try {
-    //         setLoading(true);
-    //         if(window.confirm("You want to delete this product?")) {
-    //             await axios.post('/api/destroy', {public_id: productItem.image.public_id}, {
-    //                 headers: {Authorization: token}
-    //             });
-    //              await axios.delete(`/api/delete_product/${productItem._id}`, {
-    //                 headers: {Authorization: token}
-    //             });
-    //             // alert(deleteProduct.response.data.message);
-    //         }
-    //         setLoading(false);
-    //         setCallback(!callback);
-    //     } catch (error) {
-    //         alert(error.response.data.message);
-    //     }
-    // }
-
-    // if(loading) return <div className="product-card"><Loading /></div>
 
     return (
         <div className="product-card">

@@ -1,6 +1,6 @@
 const Products = require('../models/productModel');
 
-// Filter, sorting ang paginating
+// Filter, sorting and paginating
 class APIFeatures {
     constructor(query, querystring) {
         this.query = query;
@@ -37,7 +37,7 @@ class APIFeatures {
         // page location want to see
         const page = this.querystring.page * 1 || 1;
         // Products limit in 1 page
-        const limit = this.querystring.limit * 1 || 11;
+        const limit = this.querystring.limit * 1 || 9;
         // jump to the page want to see
         const skip = (page - 1) * limit;
         this.query = this.query.skip(skip).limit(limit);

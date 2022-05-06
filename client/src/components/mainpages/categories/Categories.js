@@ -53,7 +53,7 @@ function Categories() {
     }
 
     return (
-        <div className="">
+        <div>
             <form className="form-inline justify-content-center mt-2 mb-5" onSubmit={createCategory}>
                 <div className="d-flex flex-wrap">
                     <span className="w-100 text-center categories__form-title">Category</span>

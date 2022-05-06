@@ -20,7 +20,7 @@ function OderDetails() {
     if(orderDetails.length === 0) return null;
 
     return (
-        <div>
+        <div className="mt-3 order-details">
             <table className="table table-bordered">
                 <thead>
                     <tr>

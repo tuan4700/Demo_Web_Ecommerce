@@ -86,17 +86,13 @@ function Products() {
             {
 
                 loading ? <Loading /> :
-                <div className="container products">
+                <div className="products">
                     {
                         products.map(product => {
                             return <ProductItem
                                         key={product._id}
                                         productItem={product}
                                         isAdmin={isAdmin}
-                                        // token={token}
-                                        // callback={callback}
-                                        // setCallback={setCallback}
-                                        // setProducts={setProducts}
                                         deleteProduct={deleteProduct}
                                         handleChecked={handleChecked}
                                     />
